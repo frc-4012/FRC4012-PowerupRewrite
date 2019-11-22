@@ -7,16 +7,15 @@ import frc.robot.commands.TankDrive;
 /**
  * Add your docs here.
  */
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 public class DriveTrain extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  WPI_TalonSRX dFrontMaster = new WPI_TalonSRX(Constants.LEFT_FRONT);
-  WPI_TalonSRX dFrontSlave = new WPI_TalonSRX(Constants.LEFT_BACK);
-  WPI_TalonSRX dBackMaster = new WPI_TalonSRX(Constants.RIGHT_FRONT);
-  WPI_TalonSRX dBackSlave = new WPI_TalonSRX(Constants.RIGHT_BACK);
+  WPI_VictorSPX dLeftMaster = new WPI_VictorSPX(Constants.LEFT_FRONT);
+  WPI_VictorSPX dLeftSlave= new WPI_VictorSPX(Constants.LEFT_BACK);
+  WPI_VictorSPX dRightMaster = new WPI_VictorSPX(Constants.RIGHT_FRONT);
+  WPI_VictorSPX dRightSlave = new WPI_VictorSPX(Constants.RIGHT_BACK);
 
   public DriveTrain(){
     super("DriveTrain");
@@ -30,6 +29,11 @@ public class DriveTrain extends Subsystem {
     // setDefaultCommand(new MySpecialCommand());
     setDefaultCommand(new TankDrive());
   }
+  
+  /**
+  *@param leftVal = joystick left Y value(-1:1)
+  *@param rightVal = joystick right Y value(-1:1)
+  */
 
   public void setRaw(double leftVal, double rightVal){
     dFrontMaster.set(leftVal);
