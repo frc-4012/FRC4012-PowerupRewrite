@@ -1,6 +1,6 @@
 package frc.robot;
 
-imprt edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Joystick;
 
 public class OI {
   public Joystick stickL = new Joystick(Constants.LEFT_JOY);
