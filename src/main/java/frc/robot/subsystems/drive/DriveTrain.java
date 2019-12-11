@@ -19,6 +19,7 @@ public class DriveTrain extends Subsystem {
 
   public DriveTrain(){
     super("DriveTrain");
+    dFrontMaster.setInverted(true);
     dFrontSlave.follow(dFrontMaster);
     dBackSlave.follow(dBackMaster);
   }
@@ -36,7 +37,7 @@ public class DriveTrain extends Subsystem {
   */
 
   public void setRaw(double leftVal, double rightVal){
-    dFrontMaster.set(leftVal);
-    dBackMaster.set(rightVal);
+    dFrontMaster.set(ControlMode.PercentOutput, leftVal);
+    dBackMaster.set(ControlMode.PercentOutput, rightVal);
   }
 }
